@@ -34,15 +34,19 @@ function Toast({ variant, children, index }) {
       <div className={styles.iconContainer}>
         <Icon variant={variant} />
       </div>
-      <p className={styles.content}>{children}</p>
+      <p className={styles.content}>
+        <VisuallyHidden>{variant}-</VisuallyHidden>
+        {children}
+      </p>
       <button
+        aria-label="Dismiss message"
+        aria-live="off"
         className={styles.closeButton}
         onClick={() => {
           removeToast(index);
         }}
       >
         <X size={24} />
-        <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
     </div>
   );
