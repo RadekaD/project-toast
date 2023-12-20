@@ -28,13 +28,19 @@ const Icon = ({ variant }) => {
 
 function Toast({ variant, children, index }) {
   const { removeToast } = React.useContext(ToastContext);
+
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
         <Icon variant={variant} />
       </div>
       <p className={styles.content}>{children}</p>
-      <button className={styles.closeButton} onClick={() => {removeToast(index)}}>
+      <button
+        className={styles.closeButton}
+        onClick={() => {
+          removeToast(index);
+        }}
+      >
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
