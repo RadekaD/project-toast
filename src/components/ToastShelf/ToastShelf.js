@@ -9,7 +9,7 @@ function ToastShelf({ toastArr, removeToast }) {
       {toastArr.map((toast, index) => {
         return (
           <li key={toast.id} className={styles.toastWrapper}>
-            <Toast variant={toast.variant} onRemove={() => removeToast(index)}>
+            <Toast variant={toast.variant} index={index}>
               {toast.message}
             </Toast>
           </li>

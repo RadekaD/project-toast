@@ -14,9 +14,18 @@ import { v4 as uuidv4 } from "uuid";
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
+  const {
+    toastArr,
+    setToastArr,
+    toastVariant,
+    setToastVariant,
+    message,
+    setMessage,
+    isToastVisible,
+    setIsToastVisible,
+    removeToast,
+  } = React.useContext(ToastContext);
 
-  const { toastArr, setToastArr, toastVariant, setToastVariant, message, setMessage, isToastVisible, setIsToastVisible, removeToast } = React.useContext(ToastContext);
-  
   return (
     <div className={styles.wrapper}>
       <header>
@@ -24,7 +33,9 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {isToastVisible && <ToastShelf toastArr={toastArr} removeToast={removeToast} />}
+      {isToastVisible && (
+        <ToastShelf toastArr={toastArr}/>
+      )}
 
       <form
         onSubmit={(event) => {
