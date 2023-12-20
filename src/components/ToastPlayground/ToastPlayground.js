@@ -4,23 +4,19 @@ import React from "react";
 import Button from "../Button";
 import Toast from "../Toast";
 import ToastShelf from "../ToastShelf/ToastShelf";
-
 import styles from "./ToastPlayground.module.css";
+
+//context
+import { ToastContext } from "../ToastProvider/ToastProvider";
 
 import { v4 as uuidv4 } from "uuid";
 
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
-  const [toastVariant, setToastVariant] = React.useState("notice");
-  const [message, setMessage] = React.useState("");
-  const [isToastVisible, setIsToastVisible] = React.useState(false);
-  const [toastArr, setToastArr] = React.useState([]);
 
-  const removeToast = (index) => {
-    setToastArr(toastArr.filter((_, toastIndex) => toastIndex !== index))
-  }
-
+  const { toastArr, setToastArr, toastVariant, setToastVariant, message, setMessage, isToastVisible, setIsToastVisible, removeToast } = React.useContext(ToastContext);
+  
   return (
     <div className={styles.wrapper}>
       <header>
